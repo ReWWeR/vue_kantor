@@ -19,100 +19,115 @@
     <div class="row">
         <div class="col">
             <div id="app">
-                <form>
-                    <div class="form-row mb-3">
-                        <div class="col">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" placeholder="First name"
-                                   v-model="user.firstName" id="firstName">
-                        </div>
-                        <div class="col">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last name"
-                                   v-model="user.lastName" id="lastName">
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col-md-1">
-                            <label for="lastName">ID</label>
-                            <input type="number" class="form-control" placeholder="ID"
-                                   v-model="user.id" id="id" disabled>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="registered">Registered</label>
-                            <input type="text" class="form-control" placeholder="Registered"
-                                   v-model="user.registered" id="registered" disabled>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="lastName">Age</label>
-                            <input type="number" class="form-control" placeholder="Age"
-                                   v-model="user.age" id="age">
-                        </div>
-                        <div class="col-md-2">
-                                <label for="accessLevel">Access level</label>
-                                <select name="accessLevel" id="accessLevel" class="form-control" v-model="user.accessLevel">
-                                    <option value="user">user</option>
-                                    <option value="admin">admin</option>
-                                    <option value="superAdmin">super admin</option>
-                                </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="lastName">Company</label>
-                            <input type="text" class="form-control" placeholder="Company"
-                                   v-model="user.company" id="company">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="isActive">Is active</label>
-                            <select name="isActive" id="isActive" class="form-control" v-model="user.isActive">
-                                <option value="true">true</option>
-                                <option value="false">false</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col">
-                            <label for="email">E-mail</label>
-                            <input type="email" class="form-control" placeholder="E-mail"
-                                   v-model="user.email" id="email">
-                        </div>
-                        <div class="col">
-                            <label for="email">Phone</label>
-                            <input type="tel" class="form-control" placeholder="phone"
-                                   v-model="user.phone" id="phone">
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" name="address" id="address"
-                                   v-model="user.address">
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col form-row flex-nowrap">
-                            <img :src="user.picture" alt="">
-                            <div class="ml-3 w-100">
-                            <label for="email">Picture URL</label>
-                            <input type="text" class="form-control" placeholder="Picture URL"
-                                   v-model="user.picture" id="picture">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="col">
-                            <label for="about">About</label>
-                            <textarea name="about" id="about" rows="5" class="form-control" v-model="user.about"></textarea>
-                        </div>
-                    </div>
-                </form>
+                <user-edit-form :user="user"></user-edit-form>
             </div>
         </div>
     </div>
 </div>
 <script src="https://ru.vuejs.org/js/vue.js"></script>
+
+<script type="text/x-template" id="user-edit-form">
+    <form @submit.prevent="">
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" placeholder="First name"
+                       v-model="user.firstName" id="firstName">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" id="isActive" class="form-check-input" v-model="user.isActive"> is active
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last name"
+                       v-model="user.lastName" id="lastName">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col-md-1">
+                <label for="lastName">ID</label>
+                <input type="number" class="form-control" placeholder="ID"
+                       v-model="user.id" id="id" disabled>
+            </div>
+            <div class="col-md-2">
+                <label for="registered">Registered</label>
+                <input type="text" class="form-control" placeholder="Registered"
+                       v-model="user.registered" id="registered" disabled>
+            </div>
+            <div class="col-md-1">
+                <label for="lastName">Age</label>
+                <input type="number" class="form-control" placeholder="Age"
+                       v-model="user.age" id="age">
+            </div>
+            <div class="col-md-2">
+                <label for="accessLevel">Access level</label>
+                <select name="accessLevel" id="accessLevel" class="form-control" v-model="user.accessLevel">
+                    <option disabled value="">Choose user role</option>
+                    <option v-for="accessLevel in user.accessLevels" :value="accessLevel">{{accessLevel}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName">Company</label>
+                <input type="text" class="form-control" placeholder="Company"
+                       v-model="user.company" id="company">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" placeholder="E-mail"
+                       v-model="user.email" id="email">
+            </div>
+            <div class="col">
+                <label for="email">Phone</label>
+                <input type="tel" class="form-control" placeholder="phone"
+                       v-model="user.phone" id="phone">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" name="address" id="address"
+                       v-model="user.address">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col form-row flex-nowrap">
+                <img :src="validURL" alt="">
+                <div class="ml-3 w-100">
+                    <label for="email">Picture URL</label>
+                    <input type="text" class="form-control" placeholder="Picture URL"
+                           v-model="user.picture" id="picture">
+                </div>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="about">About</label>
+                <textarea name="about" id="about" rows="5" class="form-control" v-model="user.about"></textarea>
+            </div>
+        </div>
+    </form>
+</script>
+
 <script>
+  let userEditForm = {
+    template: '#user-edit-form',
+    props: ['user'],
+    computed: {
+      validURL: function () {
+        return this.user.picture.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) ? this.user.picture : 'https://placehold.it/128x128';
+      }
+    }
+  };
+
   new Vue({
     el: '#app',
+    components: {
+      'userEditForm': userEditForm
+    },
     data: function () {
       return {
         user:
@@ -120,9 +135,10 @@
             "id": 0,
             "isActive": true,
             "balance": "$3,110.22",
-            "picture": "http://placehold.it/128x128",
+            "picture": "http://lorempixel.com/128/128/people",
             "age": 27,
             "accessLevel": "user",
+            "accessLevels": ["user", "admin", "super admin"],
             "firstName": "Cantu",
             "lastName": "Gallegos",
             "company": "MIXERS",

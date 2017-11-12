@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Users List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+          rel="stylesheet">
 
 </head>
 <body>
@@ -31,216 +33,226 @@
                         <th scope="col">Phone</th>
                     </tr>
                     </thead>
-                    <tbody is="user-table-row"></tbody>
+                    <tbody is="user-table-row" :users="users"></tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 <script src="https://ru.vuejs.org/js/vue.js"></script>
-<script>
-    let UserTableRow = {
-      template: '<tbody>' +
-      '<tr v-for="user in users" :key="user.id">' +
-      '<th scope="row">{{user.id}}</th>' +
-      '<td>{{user.firstName}}</td>' +
-      '<td>{{user.lastName}}</td>' +
-      '<td>{{user.age}}</td>' +
-      '<td>{{user.email}}</td>' +
-      '<td>{{user.phone}}</td>' +
-      '<td><a class="oi oi-pencil" title="Edit" href="./user-edit.html"></a></td>' +
-      '</tr>' +
-      '</tbody>',
-      data: function() {
-        return {
-          users: [
-            {
-              "id": 0,
-              "isActive": true,
-              "balance": "$3,110.22",
-              "picture": "http://placehold.it/128x128",
-              "age": 27,
-              "accessLevel": "user",
-              "firstName": "Cantu",
-              "lastName": "Gallegos",
-              "company": "MIXERS",
-              "email": "cantu.gallegos@mixers.biz",
-              "phone": "+7 (939) 446-3789",
-              "address": "228 Kenilworth Place, Waiohinu, New Mexico, 1934",
-              "about": "Cupidatat nostrud qui et commodo deserunt est excepteur nulla sint ullamco incididunt fugiat sit. Laboris amet magna sunt cillum sint aute fugiat sint adipisicing do nostrud aliqua ut proident. Duis est laborum minim incididunt id Lorem qui magna. Incididunt elit duis quis id fugiat cillum ipsum. Fugiat dolore occaecat et cillum cupidatat dolore adipisicing id ea dolor consectetur laboris velit.",
-              "registered": "29.01.2014"
-            },
-            {
-              "id": 1,
-              "isActive": false,
-              "balance": "$1,603.09",
-              "picture": "http://placehold.it/128x128",
-              "age": 25,
-              "accessLevel": "user",
-              "firstName": "Little",
-              "lastName": "Gomez",
-              "company": "ZEROLOGY",
-              "email": "little.gomez@zerology.us",
-              "phone": "+7 (848) 550-3250",
-              "address": "539 Kings Place, Caberfae, Arizona, 6563",
-              "about": "Incididunt et nostrud duis in nostrud mollit consectetur cillum incididunt. Dolor aliqua nulla ad excepteur laborum. Voluptate adipisicing ea est sit fugiat. Ullamco sint esse velit sunt non cupidatat velit. Dolore aute aliqua occaecat quis in deserunt fugiat exercitation deserunt laborum sit.",
-              "registered": "12.05.2016"
-            },
-            {
-              "id": 2,
-              "isActive": true,
-              "balance": "$2,838.19",
-              "picture": "http://placehold.it/128x128",
-              "age": 27,
-              "accessLevel": "guest",
-              "firstName": "Staci",
-              "lastName": "Schmidt",
-              "company": "COMTRACT",
-              "email": "staci.schmidt@comtract.io",
-              "phone": "+7 (977) 578-3983",
-              "address": "221 Schaefer Street, Somerset, Minnesota, 7069",
-              "about": "Pariatur ullamco elit sit ex commodo irure enim non. Proident et ut minim duis aute adipisicing. Elit occaecat consectetur sint aliquip commodo. Sint dolore ad aute eiusmod laborum tempor minim esse proident ea ipsum. Amet fugiat amet sit reprehenderit velit et anim enim exercitation enim magna enim.",
-              "registered": "15.03.2015"
-            },
-            {
-              "id": 3,
-              "isActive": false,
-              "balance": "$1,815.04",
-              "picture": "http://placehold.it/128x128",
-              "age": 26,
-              "accessLevel": "guest",
-              "firstName": "Kendra",
-              "lastName": "Grant",
-              "company": "BUGSALL",
-              "email": "kendra.grant@bugsall.name",
-              "phone": "+7 (864) 462-2540",
-              "address": "947 Louis Place, Durham, Arkansas, 2545",
-              "about": "Et est amet adipisicing deserunt aliqua ex eu magna. Elit ut tempor non ex consequat. Tempor eu magna consequat elit sit non et exercitation exercitation fugiat qui Lorem deserunt.",
-              "registered": "17.09.2017"
-            },
-            {
-              "id": 4,
-              "isActive": false,
-              "balance": "$2,179.79",
-              "picture": "http://placehold.it/128x128",
-              "age": 38,
-              "accessLevel": "guest",
-              "firstName": "Wendi",
-              "lastName": "Reeves",
-              "company": "EARTHWAX",
-              "email": "wendi.reeves@earthwax.biz",
-              "phone": "+7 (941) 510-2140",
-              "address": "283 Downing Street, Woodlands, Maine, 966",
-              "about": "Eu reprehenderit sunt consequat commodo eu et amet occaecat laboris fugiat. Ex nulla occaecat officia officia Lorem. Sit qui laboris amet dolore aute Lorem laboris voluptate laborum commodo sint. Nostrud tempor tempor proident ea consequat ad et nostrud culpa velit non. Ex esse ut exercitation qui pariatur.",
-              "registered": "21.01.2017"
-            },
-            {
-              "id": 5,
-              "isActive": false,
-              "balance": "$2,295.70",
-              "picture": "http://placehold.it/128x128",
-              "age": 23,
-              "accessLevel": "user",
-              "firstName": "Hooper",
-              "lastName": "Kent",
-              "company": "ISODRIVE",
-              "email": "hooper.kent@isodrive.com",
-              "phone": "+7 (813) 586-3860",
-              "address": "996 King Street, Sandston, Virgin Islands, 6241",
-              "about": "Aute tempor laboris laboris ea ullamco minim excepteur do cillum voluptate cupidatat commodo ipsum commodo. Adipisicing amet aliquip occaecat officia consectetur nulla magna. Ea velit reprehenderit tempor ad in ad esse eu minim amet aliqua occaecat enim. Mollit reprehenderit mollit do amet in mollit ex ullamco sint et eiusmod mollit.",
-              "registered": "14.11.2016"
-            },
-            {
-              "id": 6,
-              "isActive": true,
-              "balance": "$3,364.11",
-              "picture": "http://placehold.it/128x128",
-              "age": 37,
-              "accessLevel": "admin",
-              "firstName": "Conley",
-              "lastName": "Carney",
-              "company": "ZYTREK",
-              "email": "conley.carney@zytrek.info",
-              "phone": "+7 (868) 496-2405",
-              "address": "923 Hamilton Avenue, Gasquet, Northern Mariana Islands, 8084",
-              "about": "Dolor non laborum dolore fugiat do amet veniam ad exercitation ipsum adipisicing. Deserunt proident irure pariatur velit quis occaecat. Incididunt pariatur commodo esse reprehenderit nostrud amet. Reprehenderit nulla ad nostrud adipisicing consectetur in exercitation incididunt sunt laborum.",
-              "registered": "23.10.2016"
-            },
-            {
-              "id": 7,
-              "isActive": true,
-              "balance": "$2,804.51",
-              "picture": "http://placehold.it/128x128",
-              "age": 23,
-              "accessLevel": "admin",
-              "firstName": "Evelyn",
-              "lastName": "Mayo",
-              "company": "VINCH",
-              "email": "evelyn.mayo@vinch.me",
-              "phone": "+7 (871) 573-2206",
-              "address": "683 Throop Avenue, Mooresburg, Indiana, 334",
-              "about": "Commodo mollit nisi reprehenderit Lorem aute sit nulla nostrud. Pariatur id officia est amet ad cillum incididunt commodo cupidatat cillum fugiat sunt commodo. Aliquip culpa cupidatat mollit ipsum cupidatat est ex ex enim culpa consectetur aliqua excepteur. Velit incididunt consequat et aliquip culpa veniam consequat proident id occaecat elit. Laborum cupidatat incididunt fugiat esse in cillum cupidatat. Adipisicing dolor labore tempor qui aute cupidatat officia quis.",
-              "registered": "26.07.2015"
-            },
-            {
-              "id": 8,
-              "isActive": true,
-              "balance": "$1,345.34",
-              "picture": "http://placehold.it/128x128",
-              "age": 33,
-              "accessLevel": "admin",
-              "firstName": "Mindy",
-              "lastName": "Whitehead",
-              "company": "OMATOM",
-              "email": "mindy.whitehead@omatom.org",
-              "phone": "+7 (999) 512-3042",
-              "address": "783 Ridge Boulevard, Walker, Vermont, 6065",
-              "about": "Anim magna non laboris cillum eu quis dolore commodo fugiat labore. Reprehenderit aliqua consequat elit pariatur Lorem ipsum mollit ex eu ea ea dolore. Aliquip culpa esse anim nisi commodo est et sit aliqua elit culpa excepteur excepteur eu. Enim non qui consequat irure dolore laborum ullamco mollit. Duis non nulla tempor laboris. Pariatur velit laborum dolore exercitation cupidatat dolore magna. Culpa elit qui esse incididunt ut anim consequat irure minim magna laborum exercitation quis qui.",
-              "registered": "24.01.2017"
-            },
-            {
-              "id": 9,
-              "isActive": false,
-              "balance": "$3,649.89",
-              "picture": "http://placehold.it/128x128",
-              "age": 28,
-              "accessLevel": "guest",
-              "firstName": "Margery",
-              "lastName": "Barnes",
-              "company": "ZOMBOID",
-              "email": "margery.barnes@zomboid.net",
-              "phone": "+7 (971) 561-3085",
-              "address": "929 Doscher Street, Dunnavant, Kansas, 253",
-              "about": "Tempor anim proident sint irure ea sint. Irure qui et duis velit enim voluptate sint anim sint esse. Mollit quis veniam voluptate dolore elit adipisicing cillum. Ipsum eu do tempor tempor dolore eiusmod laborum cupidatat est ullamco. Aliquip laborum labore consectetur eiusmod ad mollit laborum aliqua fugiat anim nostrud irure.",
-              "registered": "20.09.2016"
-            },
-            {
-              "id": 10,
-              "isActive": false,
-              "balance": "$1,691.41",
-              "picture": "http://placehold.it/128x128",
-              "age": 28,
-              "accessLevel": "admin",
-              "firstName": "Jackson",
-              "lastName": "Bonner",
-              "company": "QUILM",
-              "email": "jackson.bonner@quilm.tv",
-              "phone": "+7 (816) 445-2225",
-              "address": "173 Plaza Street, Vandiver, Ohio, 8850",
-              "about": "Nisi amet do qui amet enim veniam esse laborum. Anim minim consectetur ut duis proident do duis veniam elit. Tempor dolor aliqua laboris amet officia. Labore nulla cupidatat aliquip dolor ea eiusmod. Labore occaecat reprehenderit ex esse.",
-              "registered": "29.10.2015"
-            }
-          ]
-        }
-      }
-    };
 
-    new Vue({
-      el: '#app',
-      components: {
-        'user-table-row': UserTableRow
+<script type="text/x-template" id="template-row">
+    <tbody>
+    <tr v-for="user in users" :key="user.id">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td><a class="oi oi-pencil" title="Edit" href="./user-edit.html"></a></td>
+    </tr>
+    </tbody>
+</script>
+
+<script>
+  let UserTableRow = {
+    template: '#template-row',
+    props: ['users'],
+    data: function () {
+      return {}
+    }
+  };
+
+  new Vue({
+    el: '#app',
+    components: {
+      'user-table-row': UserTableRow
+    },
+    data: function () {
+      return {
+        users: [
+          {
+            "id": 0,
+            "isActive": true,
+            "balance": "$3,110.22",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 27,
+            "accessLevel": "user",
+            "firstName": "Cantu",
+            "lastName": "Gallegos",
+            "company": "MIXERS",
+            "email": "cantu.gallegos@mixers.biz",
+            "phone": "+7 (939) 446-3789",
+            "address": "228 Kenilworth Place, Waiohinu, New Mexico, 1934",
+            "about": "Cupidatat nostrud qui et commodo deserunt est excepteur nulla sint ullamco incididunt fugiat sit. Laboris amet magna sunt cillum sint aute fugiat sint adipisicing do nostrud aliqua ut proident. Duis est laborum minim incididunt id Lorem qui magna. Incididunt elit duis quis id fugiat cillum ipsum. Fugiat dolore occaecat et cillum cupidatat dolore adipisicing id ea dolor consectetur laboris velit.",
+            "registered": "29.01.2014"
+          },
+          {
+            "id": 1,
+            "isActive": false,
+            "balance": "$1,603.09",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 25,
+            "accessLevel": "user",
+            "firstName": "Little",
+            "lastName": "Gomez",
+            "company": "ZEROLOGY",
+            "email": "little.gomez@zerology.us",
+            "phone": "+7 (848) 550-3250",
+            "address": "539 Kings Place, Caberfae, Arizona, 6563",
+            "about": "Incididunt et nostrud duis in nostrud mollit consectetur cillum incididunt. Dolor aliqua nulla ad excepteur laborum. Voluptate adipisicing ea est sit fugiat. Ullamco sint esse velit sunt non cupidatat velit. Dolore aute aliqua occaecat quis in deserunt fugiat exercitation deserunt laborum sit.",
+            "registered": "12.05.2016"
+          },
+          {
+            "id": 2,
+            "isActive": true,
+            "balance": "$2,838.19",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 27,
+            "accessLevel": "guest",
+            "firstName": "Staci",
+            "lastName": "Schmidt",
+            "company": "COMTRACT",
+            "email": "staci.schmidt@comtract.io",
+            "phone": "+7 (977) 578-3983",
+            "address": "221 Schaefer Street, Somerset, Minnesota, 7069",
+            "about": "Pariatur ullamco elit sit ex commodo irure enim non. Proident et ut minim duis aute adipisicing. Elit occaecat consectetur sint aliquip commodo. Sint dolore ad aute eiusmod laborum tempor minim esse proident ea ipsum. Amet fugiat amet sit reprehenderit velit et anim enim exercitation enim magna enim.",
+            "registered": "15.03.2015"
+          },
+          {
+            "id": 3,
+            "isActive": false,
+            "balance": "$1,815.04",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 26,
+            "accessLevel": "guest",
+            "firstName": "Kendra",
+            "lastName": "Grant",
+            "company": "BUGSALL",
+            "email": "kendra.grant@bugsall.name",
+            "phone": "+7 (864) 462-2540",
+            "address": "947 Louis Place, Durham, Arkansas, 2545",
+            "about": "Et est amet adipisicing deserunt aliqua ex eu magna. Elit ut tempor non ex consequat. Tempor eu magna consequat elit sit non et exercitation exercitation fugiat qui Lorem deserunt.",
+            "registered": "17.09.2017"
+          },
+          {
+            "id": 4,
+            "isActive": false,
+            "balance": "$2,179.79",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 38,
+            "accessLevel": "guest",
+            "firstName": "Wendi",
+            "lastName": "Reeves",
+            "company": "EARTHWAX",
+            "email": "wendi.reeves@earthwax.biz",
+            "phone": "+7 (941) 510-2140",
+            "address": "283 Downing Street, Woodlands, Maine, 966",
+            "about": "Eu reprehenderit sunt consequat commodo eu et amet occaecat laboris fugiat. Ex nulla occaecat officia officia Lorem. Sit qui laboris amet dolore aute Lorem laboris voluptate laborum commodo sint. Nostrud tempor tempor proident ea consequat ad et nostrud culpa velit non. Ex esse ut exercitation qui pariatur.",
+            "registered": "21.01.2017"
+          },
+          {
+            "id": 5,
+            "isActive": false,
+            "balance": "$2,295.70",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 23,
+            "accessLevel": "user",
+            "firstName": "Hooper",
+            "lastName": "Kent",
+            "company": "ISODRIVE",
+            "email": "hooper.kent@isodrive.com",
+            "phone": "+7 (813) 586-3860",
+            "address": "996 King Street, Sandston, Virgin Islands, 6241",
+            "about": "Aute tempor laboris laboris ea ullamco minim excepteur do cillum voluptate cupidatat commodo ipsum commodo. Adipisicing amet aliquip occaecat officia consectetur nulla magna. Ea velit reprehenderit tempor ad in ad esse eu minim amet aliqua occaecat enim. Mollit reprehenderit mollit do amet in mollit ex ullamco sint et eiusmod mollit.",
+            "registered": "14.11.2016"
+          },
+          {
+            "id": 6,
+            "isActive": true,
+            "balance": "$3,364.11",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 37,
+            "accessLevel": "admin",
+            "firstName": "Conley",
+            "lastName": "Carney",
+            "company": "ZYTREK",
+            "email": "conley.carney@zytrek.info",
+            "phone": "+7 (868) 496-2405",
+            "address": "923 Hamilton Avenue, Gasquet, Northern Mariana Islands, 8084",
+            "about": "Dolor non laborum dolore fugiat do amet veniam ad exercitation ipsum adipisicing. Deserunt proident irure pariatur velit quis occaecat. Incididunt pariatur commodo esse reprehenderit nostrud amet. Reprehenderit nulla ad nostrud adipisicing consectetur in exercitation incididunt sunt laborum.",
+            "registered": "23.10.2016"
+          },
+          {
+            "id": 7,
+            "isActive": true,
+            "balance": "$2,804.51",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 23,
+            "accessLevel": "admin",
+            "firstName": "Evelyn",
+            "lastName": "Mayo",
+            "company": "VINCH",
+            "email": "evelyn.mayo@vinch.me",
+            "phone": "+7 (871) 573-2206",
+            "address": "683 Throop Avenue, Mooresburg, Indiana, 334",
+            "about": "Commodo mollit nisi reprehenderit Lorem aute sit nulla nostrud. Pariatur id officia est amet ad cillum incididunt commodo cupidatat cillum fugiat sunt commodo. Aliquip culpa cupidatat mollit ipsum cupidatat est ex ex enim culpa consectetur aliqua excepteur. Velit incididunt consequat et aliquip culpa veniam consequat proident id occaecat elit. Laborum cupidatat incididunt fugiat esse in cillum cupidatat. Adipisicing dolor labore tempor qui aute cupidatat officia quis.",
+            "registered": "26.07.2015"
+          },
+          {
+            "id": 8,
+            "isActive": true,
+            "balance": "$1,345.34",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 33,
+            "accessLevel": "admin",
+            "firstName": "Mindy",
+            "lastName": "Whitehead",
+            "company": "OMATOM",
+            "email": "mindy.whitehead@omatom.org",
+            "phone": "+7 (999) 512-3042",
+            "address": "783 Ridge Boulevard, Walker, Vermont, 6065",
+            "about": "Anim magna non laboris cillum eu quis dolore commodo fugiat labore. Reprehenderit aliqua consequat elit pariatur Lorem ipsum mollit ex eu ea ea dolore. Aliquip culpa esse anim nisi commodo est et sit aliqua elit culpa excepteur excepteur eu. Enim non qui consequat irure dolore laborum ullamco mollit. Duis non nulla tempor laboris. Pariatur velit laborum dolore exercitation cupidatat dolore magna. Culpa elit qui esse incididunt ut anim consequat irure minim magna laborum exercitation quis qui.",
+            "registered": "24.01.2017"
+          },
+          {
+            "id": 9,
+            "isActive": false,
+            "balance": "$3,649.89",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 28,
+            "accessLevel": "guest",
+            "firstName": "Margery",
+            "lastName": "Barnes",
+            "company": "ZOMBOID",
+            "email": "margery.barnes@zomboid.net",
+            "phone": "+7 (971) 561-3085",
+            "address": "929 Doscher Street, Dunnavant, Kansas, 253",
+            "about": "Tempor anim proident sint irure ea sint. Irure qui et duis velit enim voluptate sint anim sint esse. Mollit quis veniam voluptate dolore elit adipisicing cillum. Ipsum eu do tempor tempor dolore eiusmod laborum cupidatat est ullamco. Aliquip laborum labore consectetur eiusmod ad mollit laborum aliqua fugiat anim nostrud irure.",
+            "registered": "20.09.2016"
+          },
+          {
+            "id": 10,
+            "isActive": false,
+            "balance": "$1,691.41",
+            "picture": "http://lorempixel.com/128/128/people",
+            "age": 28,
+            "accessLevel": "admin",
+            "firstName": "Jackson",
+            "lastName": "Bonner",
+            "company": "QUILM",
+            "email": "jackson.bonner@quilm.tv",
+            "phone": "+7 (816) 445-2225",
+            "address": "173 Plaza Street, Vandiver, Ohio, 8850",
+            "about": "Nisi amet do qui amet enim veniam esse laborum. Anim minim consectetur ut duis proident do duis veniam elit. Tempor dolor aliqua laboris amet officia. Labore nulla cupidatat aliquip dolor ea eiusmod. Labore occaecat reprehenderit ex esse.",
+            "registered": "29.10.2015"
+          }
+        ]
+
       }
-    })
+    }
+  })
 </script>
 </body>
 </html>
