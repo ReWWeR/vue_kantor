@@ -1,0 +1,202 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "isActive": false,
+      "balance": "$3,235.25",
+      "picture": "http://placehold.it/128x128",
+      "age": 36,
+      "accessLevel": [
+        "guest"
+      ],
+      "firstName": "Alba",
+      "lastName": "Macdonald",
+      "company": "DIGIGEN",
+      "email": "alba.macdonald@digigen.me",
+      "phone": "+7 (867) 434-2533",
+      "address": "986 Chauncey Street, Efland, Montana, 9428",
+      "about": "Dolor elit do do esse. Anim eu laboris culpa aliqua deserunt duis amet ullamco culpa voluptate officia mollit quis et. Nostrud culpa eu elit consectetur labore veniam tempor ad ex culpa ex laborum. Pariatur do ea est proident ad dolor excepteur officia est deserunt.",
+      "registered": "28.01.2015"
+    },
+    {
+      "id": 1,
+      "isActive": true,
+      "balance": "$3,379.72",
+      "picture": "http://placehold.it/128x128",
+      "age": 38,
+      "accessLevel": [
+        "user"
+      ],
+      "firstName": "Bertha",
+      "lastName": "Luna",
+      "company": "MAGNINA",
+      "email": "bertha.luna@magnina.co.uk",
+      "phone": "+7 (818) 419-3656",
+      "address": "462 Stewart Street, Stagecoach, Indiana, 2074",
+      "about": "In pariatur ullamco adipisicing aliquip aliquip cillum labore incididunt reprehenderit exercitation reprehenderit. Do quis fugiat irure eiusmod officia exercitation eu voluptate minim reprehenderit minim et Lorem nostrud. Esse magna dolore veniam laboris. Anim excepteur laborum id est Lorem qui elit dolore sint veniam excepteur proident enim. Ut excepteur exercitation veniam eu exercitation adipisicing. Occaecat aute laborum sint voluptate do commodo tempor commodo ad tempor consectetur.",
+      "registered": "20.07.2017"
+    },
+    {
+      "id": 2,
+      "isActive": true,
+      "balance": "$2,310.88",
+      "picture": "http://placehold.it/128x128",
+      "age": 32,
+      "accessLevel": [
+        "user"
+      ],
+      "firstName": "Armstrong",
+      "lastName": "Ballard",
+      "company": "PROTODYNE",
+      "email": "armstrong.ballard@protodyne.tv",
+      "phone": "+7 (940) 596-3512",
+      "address": "285 Dekoven Court, Century, South Dakota, 5864",
+      "about": "Velit voluptate ipsum proident ea veniam velit qui veniam. Exercitation nisi nulla magna aute officia ad minim. Eu mollit id id minim consequat ut anim minim commodo. Magna commodo reprehenderit elit laborum magna excepteur veniam. Commodo nostrud veniam in sint est velit nulla.",
+      "registered": "20.05.2014"
+    },
+    {
+      "id": 3,
+      "isActive": true,
+      "balance": "$2,634.37",
+      "picture": "http://placehold.it/128x128",
+      "age": 21,
+      "accessLevel": [
+        "guest"
+      ],
+      "firstName": "Lynn",
+      "lastName": "House",
+      "company": "DYMI",
+      "email": "lynn.house@dymi.biz",
+      "phone": "+7 (889) 457-2583",
+      "address": "212 Anthony Street, Warsaw, California, 9282",
+      "about": "Ea tempor laborum Lorem voluptate irure nostrud id sunt amet sunt sit sunt. Et aliquip sit incididunt culpa exercitation deserunt. Pariatur officia sint mollit commodo magna ipsum consequat sit occaecat ex aliquip deserunt officia. Irure ullamco magna commodo mollit eiusmod et minim nostrud duis sunt. Nulla reprehenderit exercitation elit culpa et nulla minim esse minim duis. Amet mollit ipsum exercitation ipsum ut cillum nulla dolore aliquip reprehenderit est eu.",
+      "registered": "10.01.2014"
+    },
+    {
+      "id": 4,
+      "isActive": false,
+      "balance": "$1,534.93",
+      "picture": "http://placehold.it/128x128",
+      "age": 21,
+      "accessLevel": [
+        "guest"
+      ],
+      "firstName": "Sadie",
+      "lastName": "Estrada",
+      "company": "EARTHWAX",
+      "email": "sadie.estrada@earthwax.org",
+      "phone": "+7 (946) 435-2693",
+      "address": "389 Sharon Street, Sparkill, Hawaii, 8870",
+      "about": "Esse eu exercitation amet anim fugiat. Eiusmod pariatur labore sunt nulla ut sint ipsum anim est tempor non. Amet cupidatat exercitation sunt ea ex nostrud et. Anim mollit nulla cillum sit culpa irure consequat.",
+      "registered": "25.02.2014"
+    },
+    {
+      "id": 5,
+      "isActive": false,
+      "balance": "$3,998.23",
+      "picture": "http://placehold.it/128x128",
+      "age": 23,
+      "accessLevel": [
+        "admin"
+      ],
+      "firstName": "Navarro",
+      "lastName": "Lane",
+      "company": "GONKLE",
+      "email": "navarro.lane@gonkle.info",
+      "phone": "+7 (895) 445-2206",
+      "address": "833 Graham Avenue, Wright, Pennsylvania, 393",
+      "about": "Cupidatat laboris consequat enim incididunt ut velit. Cillum amet irure dolore ut mollit magna dolore do labore sit. Labore elit Lorem magna ullamco commodo aliqua.",
+      "registered": "21.05.2017"
+    },
+    {
+      "id": 6,
+      "isActive": false,
+      "balance": "$1,096.55",
+      "picture": "http://placehold.it/128x128",
+      "age": 23,
+      "accessLevel": [
+        "admin"
+      ],
+      "firstName": "Arlene",
+      "lastName": "Romero",
+      "company": "SEALOUD",
+      "email": "arlene.romero@sealoud.us",
+      "phone": "+7 (838) 438-2053",
+      "address": "389 Gilmore Court, Strong, Puerto Rico, 9419",
+      "about": "Quis culpa elit irure veniam sunt aute aliquip ut magna. Labore occaecat eu qui ea enim nisi adipisicing cillum nisi do pariatur consequat. Labore est ut dolor ullamco Lorem anim dolor aliqua sit ex deserunt non nisi nostrud.",
+      "registered": "07.01.2014"
+    },
+    {
+      "id": 7,
+      "isActive": true,
+      "balance": "$1,899.28",
+      "picture": "http://placehold.it/128x128",
+      "age": 36,
+      "accessLevel": [
+        "admin"
+      ],
+      "firstName": "Nixon",
+      "lastName": "Velasquez",
+      "company": "BOSTONIC",
+      "email": "nixon.velasquez@bostonic.ca",
+      "phone": "+7 (938) 538-2385",
+      "address": "158 Ferris Street, Harborton, Kentucky, 6830",
+      "about": "Aliqua exercitation commodo excepteur commodo irure consequat. Cillum aute ipsum magna dolore nostrud enim deserunt commodo deserunt. Aliquip veniam elit in laboris dolore adipisicing anim proident cupidatat in ea. Ex laborum ex in ex. Cupidatat aliquip elit do duis mollit non occaecat ut. Sit proident amet ut labore quis excepteur. Exercitation do aliquip ipsum deserunt nostrud est consequat voluptate est aliquip ex incididunt.",
+      "registered": "09.05.2016"
+    },
+    {
+      "id": 8,
+      "isActive": false,
+      "balance": "$1,014.01",
+      "picture": "http://placehold.it/128x128",
+      "age": 29,
+      "accessLevel": [
+        "user"
+      ],
+      "firstName": "Laverne",
+      "lastName": "Nelson",
+      "company": "NORALI",
+      "email": "laverne.nelson@norali.com",
+      "phone": "+7 (825) 599-3579",
+      "address": "763 Jamaica Avenue, Elliston, Florida, 4076",
+      "about": "Sint ullamco do occaecat cillum est officia nisi ea. Et proident adipisicing laboris culpa eu. Excepteur amet ea adipisicing ut quis velit elit nisi aliqua. Et nulla laborum eu reprehenderit excepteur voluptate ea. Nostrud non commodo nisi laborum do dolore exercitation anim adipisicing.",
+      "registered": "30.11.2015"
+    },
+    {
+      "id": 9,
+      "isActive": false,
+      "balance": "$2,993.39",
+      "picture": "http://placehold.it/128x128",
+      "age": 36,
+      "accessLevel": [
+        "guest"
+      ],
+      "firstName": "Jenifer",
+      "lastName": "Dudley",
+      "company": "ECSTASIA",
+      "email": "jenifer.dudley@ecstasia.net",
+      "phone": "+7 (837) 463-3874",
+      "address": "721 Bushwick Place, Curtice, Illinois, 6977",
+      "about": "Eu nostrud eu culpa ex anim amet excepteur occaecat sunt in. Occaecat ea nostrud dolor non tempor sunt exercitation labore esse reprehenderit est. Culpa deserunt anim incididunt laboris elit veniam exercitation esse consectetur eu nostrud laboris magna. Velit enim veniam incididunt sit qui minim eu commodo culpa sint duis nulla ipsum adipisicing. Incididunt laborum tempor do amet ipsum nostrud pariatur cupidatat ad ea duis mollit eiusmod officia.",
+      "registered": "12.08.2017"
+    },
+    {
+      "id": 10,
+      "isActive": true,
+      "balance": "$2,284.87",
+      "picture": "http://placehold.it/128x128",
+      "age": 26,
+      "accessLevel": [
+        "admin"
+      ],
+      "firstName": "Claudette",
+      "lastName": "Blanchard",
+      "company": "TETAK",
+      "email": "claudette.blanchard@tetak.io",
+      "phone": "+7 (892) 412-3460",
+      "address": "142 Albemarle Terrace, Bascom, American Samoa, 5910",
+      "about": "Eiusmod ad elit ex veniam consequat deserunt. Sint veniam consectetur laborum deserunt pariatur magna nisi Lorem. Dolore amet tempor officia elit aliquip ea eu ad esse nulla sint officia.",
+      "registered": "22.05.2017"
+    }
+  ]
+}
