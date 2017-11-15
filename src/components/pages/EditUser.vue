@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col">
           <div id="app">
-            <user-form :user="user"></user-form>
+            <user-form :user="user" v-if="user"></user-form>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
     },
     data: () => {
       return {
-        user: {}
+        user: null
       }
     },
     async created() {

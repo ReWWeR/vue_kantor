@@ -1,6 +1,6 @@
 <template>
   <tbody>
-    <tr v-for="user in users" :key="user.id">
+    <tr v-for="user in limitBy" :key="user.id">
       <th scope="row">{{user.id}}</th>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
@@ -21,6 +21,19 @@
       users: {
         type: Array,
         required: true
+      },
+      rowsPerPage: {
+        type: Number,
+        default: 10
+      },
+      pagNum: {
+        type: Number,
+        default: 1
+      }
+    },
+    computed: {
+      limitBy() {
+        return this.users.slice((this.pagNum - 1) * this.rowsPerPage, this.rowsPerPage * this.pagNum)
       }
     }
   }
