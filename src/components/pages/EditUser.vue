@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col">
           <div id="app">
-            <user-form :user="user" v-model="user" v-if="user"></user-form>
+            <user-form v-model="user" v-if="user"></user-form>
           </div>
         </div>
       </div>
