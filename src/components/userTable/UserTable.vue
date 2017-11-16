@@ -1,11 +1,11 @@
 <template>
-  <div v-if="users.length">
+  <div v-if="showForm">
     <div class="row">
       <div class="col-md-3 mb-3">
-        <limit-by @limitByChange="limitByChange"></limit-by>
+        <limit-by v-model.number="rowsPerPage" :rowsPerPage="rowsPerPage"></limit-by>
       </div>
     </div>
-    <table class="table table-dark" v-if="users">
+    <table class="table table-dark">
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -16,9 +16,9 @@
         <th scope="col">Phone</th>
       </tr>
       </thead>
-      <tbody is="user-list" :users="users" :rowsPerPage="rowsPerPage" :pagNum="pageNum"></tbody>
+      <user-list :users="limitByUsers"></user-list>
     </table>
-    <pagination :rowsPerPage="rowsPerPage" :totalRows="users.length" @setPagination="setPageNum"></pagination>
+    <pagination :rowsPerPage="rowsPerPage" :totalRows="users.length" v-model.number="pageNum"></pagination>
   </div>
 </template>
 
@@ -30,35 +30,36 @@
 
   export default {
     name: 'user-table',
-    data: () => ({
-      users: [],
-      rowsPerPage: 10,
-      pageNum: 1
-    }),
     components: {
       UserList,
       Pagination,
       LimitBy
     },
-    async created() {
-      try {
-        const {data} = await UsersAPI().get('/users');
-        this.users = data;
-      } catch (e) {
-        console.log(e)
+    data: () => ({
+      users: [],
+      rowsPerPage: 10,
+      pageNum: 1
+    }),
+    computed: {
+      showForm() {
+        return this.users.length
+      },
+      limitByUsers() {
+        return this.users.slice((this.pageNum - 1) * this.rowsPerPage, this.rowsPerPage * this.pageNum)
       }
     },
     methods: {
-      limitByChange(limit) {
-        this.rowsPerPage = +limit;
-      },
-      setPageNum(newPageNum) {
-        this.pageNum = newPageNum;
+      async getUsers() {
+        try {
+          const {data} = await UsersAPI.get('/users');
+          this.users = data;
+        } catch (e) {
+          console.log(e)
+        }
       }
-    }
+    },
+    created() {
+      this.getUsers()
+    },
   }
 </script>
-
-<style scoped>
-
-</style>

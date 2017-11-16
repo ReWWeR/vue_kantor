@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col">
           <div id="app">
-            <user-form :user="user" v-if="user"></user-form>
+            <user-form :user="user" v-model="user" v-if="user"></user-form>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
   import UsersAPI from './../../services/UsersAPI'
 
   export default {
-    name: 'add-user',
+    name: 'edit-user',
     components: {
       UserForm
     },
@@ -33,17 +33,18 @@
         user: null
       }
     },
-    async created() {
-      try {
-        const {data} = await UsersAPI().get(`/users/${this.$route.params.id}`)
-        this.user = data;
-      } catch (e) {
-        console.log(e)
+    methods: {
+      async fetchData() {
+        try {
+          const {data} = await UsersAPI.get(`/users/${this.$route.params.id}`);
+          this.user = data;
+        } catch (e) {
+          console.log(e)
+        }
       }
-    }
+    },
+    created() {
+      this.fetchData();
+    },
   }
 </script>
-
-<style scoped>
-
-</style>

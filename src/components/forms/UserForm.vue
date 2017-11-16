@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="">
+  <div class="user-form">
     <pre class="pre-scrollable">{{user}}</pre>
     <div class="form-row mb-3">
       <div class="col">
@@ -20,7 +20,7 @@
     </div>
     <div class="form-row mb-3">
       <div class="col-md-1">
-        <label for="lastName">ID</label>
+        <label for="id">ID</label>
         <input type="number" class="form-control" placeholder="ID"
                v-model="user.id" id="id" disabled>
       </div>
@@ -30,18 +30,18 @@
                v-model="user.registered" id="registered" disabled>
       </div>
       <div class="col-md-1">
-        <label for="lastName">Age</label>
+        <label for="age">Age</label>
         <input type="number" class="form-control" placeholder="Age"
-               v-model="user.age" id="age">
+               v-model.number="user.age" id="age">
       </div>
       <div class="col-md-2">
         <label for="accessLevel">Access level</label>
         <select name="accessLevel" id="accessLevel" class="form-control" v-model="user.accessLevel" multiple>
-          <option v-for="accessLevel in user.accessLevel" :value="accessLevel">{{accessLevel}}</option>
+          <option v-for="accessLevel in accessLevels" :value="accessLevel" :key="accessLevel">{{accessLevel}}</option>
         </select>
       </div>
       <div class="col-md-6">
-        <label for="lastName">Company</label>
+        <label for="company">Company</label>
         <input type="text" class="form-control" placeholder="Company"
                v-model="user.company" id="company">
       </div>
@@ -53,7 +53,7 @@
                v-model="user.email" id="email">
       </div>
       <div class="col">
-        <label for="email">Phone</label>
+        <label for="phone">Phone</label>
         <input type="tel" class="form-control" placeholder="phone"
                v-model="user.phone" id="phone">
       </div>
@@ -69,7 +69,7 @@
       <div class="col form-row flex-nowrap">
         <img :src="user.picture" v-if="user.picture" alt="">
         <div class="ml-3 w-100">
-          <label for="email">Picture URL</label>
+          <label for="picture">Picture URL</label>
           <input type="text" class="form-control" placeholder="Picture URL"
                  v-model="user.picture" id="picture">
         </div>
@@ -81,7 +81,7 @@
         <textarea name="about" id="about" rows="5" class="form-control" v-model="user.about"></textarea>
       </div>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -92,10 +92,9 @@
         type: Object,
         required: true
       }
-    }
+    },
+    data: () => ({
+      accessLevels: ['user','guest','admin']
+    })
   }
 </script>
-
-<style scoped>
-
-</style>

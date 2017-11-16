@@ -1,13 +1,15 @@
 <template>
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#">Previous</a>
+      <li class="page-item" :class="{disabled: isFirstPage}">
+        <button class="page-link" @click="prevNextButtons(-1)">Previous</button>
       </li>
-      <li class="page-item" :class="{active: currentPage === index + 1}" v-for="(page, index) in countPaginations">
-        <a class="page-link" @click.prevent="setPagination(index)" href="#">{{index + 1}}</a>
+      <li class="page-item" :class="{active: isActive(index)}" v-for="(page, index) in totalPages" :key="page">
+        <button class="page-link" @click="setPagination(index)">{{index + 1}}</button>
       </li>
-      <li class="page-item"><a class="page-link" href="#" disabled>Next</a></li>
+      <li class="page-item" :class="{disabled: isLastPage}">
+        <button class="page-link" @click="prevNextButtons(1)">Next</button>
+      </li>
     </ul>
   </nav>
 </template>
@@ -29,26 +31,41 @@
       currentPage: 1
     }),
     computed: {
-      countPaginations() {
+      totalPages() {
         return Math.ceil(this.totalRows/this.rowsPerPage)
-      }
-    },
-    methods: {
-      setPagination(index) {
-        this.currentPage = index + 1;
-        this.$emit('setPagination', this.currentPage)
+      },
+      isLastPage() {
+        return this.currentPage === this.totalPages
+      },
+      isFirstPage() {
+        return this.currentPage === 1
       }
     },
     watch: {
-      rowsPerPage: function(newVal) {
-        if ((this.currentPage * newVal) > this.totalRows) {
-          this.setPagination(this.countPaginations - 1);
+      rowsPerPage() {
+        if ((this.currentPage * this.rowsPerPage) > this.totalRows) {
+          this.setPagination(this.totalPages - 1);
         }
       }
-    }
+    },
+    methods: {
+      setPagination(pageNumber) {
+        this.currentPage = pageNumber + 1;
+        this.$emit('input', this.currentPage)
+      },
+      prevNextButtons(turn) {
+        this.currentPage += turn;
+        this.$emit('input', this.currentPage)
+      },
+      isActive(index) {
+        return this.currentPage === index + 1
+      }
+    },
   }
 </script>
 
 <style scoped>
-
+  .page-link {
+    cursor: pointer;
+  }
 </style>

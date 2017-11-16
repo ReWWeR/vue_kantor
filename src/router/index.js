@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Index = () => import('./../components/pages/Index.vue');
-const AddUser = () => import('./../components/pages/AddUser.vue');
-const EditUser = () => import('./../components/pages/EditUser.vue');
-
 Vue.use(Router)
 
 export default new Router({
@@ -13,17 +9,17 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index
+      component: () => import('./../components/pages/Index.vue')
     },
     {
       path: '/add',
       name: 'add-user',
-      component: AddUser
+      component: () => import('./../components/pages/AddUser.vue')
     },
     {
       path: '/edit/:id',
       name: 'edit-user',
-      component: EditUser
+      component: () => import('./../components/pages/EditUser.vue')
     }
   ]
 })
