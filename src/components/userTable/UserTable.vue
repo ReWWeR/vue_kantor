@@ -2,7 +2,7 @@
   <div v-if="showForm">
     <div class="row">
       <div class="col-md-3 mb-3">
-        <limit-by v-model.number="rowsPerPage" :rowsPerPage="rowsPerPage"></limit-by>
+        <limit-by v-model.number="rowsPerPage"></limit-by>
       </div>
     </div>
     <table class="table table-dark">
@@ -18,7 +18,7 @@
       </thead>
       <user-list :users="limitByUsers"></user-list>
     </table>
-    <pagination :rowsPerPage="rowsPerPage" :totalRows="users.length" v-model.number="pageNum"></pagination>
+    <pagination :rowsPerPage="rowsPerPage" :totalRows="users.length" v-model.number="currentPage"></pagination>
   </div>
 </template>
 
@@ -38,14 +38,14 @@
     data: () => ({
       users: [],
       rowsPerPage: 10,
-      pageNum: 1
+      currentPage: 1
     }),
     computed: {
       showForm() {
         return this.users.length
       },
       limitByUsers() {
-        return this.users.slice((this.pageNum - 1) * this.rowsPerPage, this.rowsPerPage * this.pageNum)
+        return this.users.slice((this.currentPage - 1) * this.rowsPerPage, this.rowsPerPage * this.currentPage)
       }
     },
     methods: {

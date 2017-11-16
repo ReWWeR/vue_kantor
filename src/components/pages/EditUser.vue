@@ -10,9 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div id="app">
             <user-form v-model="user" v-if="user"></user-form>
-          </div>
         </div>
       </div>
     </div>
@@ -33,10 +31,15 @@
         user: null
       }
     },
+    computed: {
+      getUserById() {
+        return `/users/${this.$route.params.id}`
+      }
+    },
     methods: {
       async fetchData() {
         try {
-          const {data} = await UsersAPI.get(`/users/${this.$route.params.id}`);
+          const {data} = await UsersAPI.get(this.getUserById);
           this.user = data;
         } catch (e) {
           console.log(e)

@@ -4,8 +4,8 @@
       <li class="page-item" :class="{disabled: isFirstPage}">
         <button class="page-link" @click="prevNextButtons(-1)">Previous</button>
       </li>
-      <li class="page-item" :class="{active: isActive(index)}" v-for="(page, index) in totalPages" :key="page">
-        <button class="page-link" @click="setPagination(index)">{{index + 1}}</button>
+      <li class="page-item" :class="{active: isActive(page)}" v-for="(page, index) in totalPages" :key="page">
+        <button class="page-link" @click="setPagination(page)">{{ page }}</button>
       </li>
       <li class="page-item" :class="{disabled: isLastPage}">
         <button class="page-link" @click="prevNextButtons(1)">Next</button>
@@ -17,22 +17,30 @@
 <script>
   export default {
     name: 'pagination',
+    model: {
+      prop: 'currentPage',
+      event: 'change'
+    },
     props: {
       rowsPerPage: {
         type: Number,
-        default: 10
+        required: true
       },
       totalRows: {
         type: Number,
         default: 10
+      },
+      currentPage: {
+        type: Number,
+        required: true
       }
     },
     data: () => ({
-      currentPage: 1
+//      currentPage: 1
     }),
     computed: {
       totalPages() {
-        return Math.ceil(this.totalRows/this.rowsPerPage)
+        return Math.ceil(this.totalRows / this.rowsPerPage)
       },
       isLastPage() {
         return this.currentPage === this.totalPages
@@ -43,22 +51,18 @@
     },
     watch: {
       rowsPerPage() {
-        if ((this.currentPage * this.rowsPerPage) > this.totalRows) {
-          this.setPagination(this.totalPages - 1);
-        }
+        this.setPagination(1);
       }
     },
     methods: {
-      setPagination(pageNumber) {
-        this.currentPage = pageNumber + 1;
-        this.$emit('input', this.currentPage)
+      setPagination(page) {
+        this.$emit('change', page)
       },
       prevNextButtons(turn) {
-        this.currentPage += turn;
-        this.$emit('input', this.currentPage)
+        this.$emit('change', this.currentPage + turn)
       },
-      isActive(index) {
-        return this.currentPage === index + 1
+      isActive(page) {
+        return this.currentPage === page
       }
     },
   }

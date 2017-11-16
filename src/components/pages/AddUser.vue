@@ -3,15 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>Add User</h1>
+          <h1>Edit User</h1>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col">
-          <div id="app">
-          </div>
+          <user-form v-model="user" v-if="user"></user-form>
         </div>
       </div>
     </div>
@@ -20,7 +19,6 @@
 
 <script>
   import UserForm from '../forms/UserForm.vue';
-  import UsersAPI from './../../services/UsersAPI'
 
   export default {
     name: 'add-user',

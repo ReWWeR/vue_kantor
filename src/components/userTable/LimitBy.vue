@@ -1,6 +1,6 @@
 <template>
   <label>Limit by:
-  <select @change="limitChange" name="limitBy" id="limitBy" class="form-control" v-model.number="rowsPerPage">
+  <select @change="limitChange" name="limitBy" id="limitBy" :value="rowsPerPage" class="form-control">
     <option v-for="option in options" :key="option">{{option}}</option>
   </select>
   </label>
@@ -10,23 +10,22 @@
   export default {
     name: 'limit-by',
     model: {
-      prop: 'value',
+      prop: 'rowsPerPage',
       event: 'change'
-    }/*,
+    },
     props: {
       rowsPerPage: {
         type: Number,
-        default: 10
+        required: true
       }
-    }*/,
+    },
     data:
       () => ({
-        options: [5, 10, 20, 50],
-        rowsPerPage: 10
+        options: [5, 10, 20, 50]
       }),
     methods: {
       limitChange() {
-        this.$emit('change', this.rowsPerPage);
+        this.$emit('change', event.target.value);
       }
     }
   }
