@@ -7,6 +7,8 @@
   import Dropzone from 'dropzone/dist/dropzone'
   import 'dropzone/dist/dropzone.css'
 
+  Dropzone.autoDiscover = false;
+
   export default {
     name: 'dropzone',
     data: () => ({
@@ -31,6 +33,9 @@
         this.$emit('input', data.link);
       })
 
+    },
+    destroyed() {
+      this.dropzone.destroy()
     }
   }
 </script>
