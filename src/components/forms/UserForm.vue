@@ -6,10 +6,8 @@
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" placeholder="First name"
                v-model="user.firstName" id="firstName">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" id="isActive" class="form-check-input" v-model="user.isActive"> is active
-          </label>
+        <div class="form-check pt-3">
+          <span class="float-left mr-3">Is active:</span> <checkbox v-model="user.isActive"></checkbox>
         </div>
       </div>
       <div class="col">
@@ -100,6 +98,7 @@
   import Datepicker from './../plugins/Datepicker.vue'
   import MediumEditor from './../plugins/MediumEditor.vue'
   import Dropzone from './../plugins/Dropzone.vue'
+  import Checkbox from './../customHtmlElements/Checkbox.vue'
   import moment from 'moment'
 
   export default {
@@ -116,7 +115,8 @@
     components: {
       Datepicker,
       MediumEditor,
-      Dropzone
+      Dropzone,
+      Checkbox
     },
     data: () => ({
       accessLevels: ['user', 'guest', 'admin']
