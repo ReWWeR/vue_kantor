@@ -19,12 +19,18 @@
 
 <script>
   import UserForm from '../forms/UserForm.vue';
-  import UsersAPI from './../../services/UsersAPI'
+  import {localAPI} from './../../services/UsersAPI'
 
   export default {
     name: 'edit-user',
     components: {
       UserForm
+    },
+    props: {
+      id: {
+        type: Number,
+        required: true
+      }
     },
     data: () => {
       return {
@@ -33,13 +39,13 @@
     },
     computed: {
       getUserById() {
-        return `/users/${this.$route.params.id}`
+        return `/users/${this.id}`
       }
     },
     methods: {
       async fetchData() {
         try {
-          const {data} = await UsersAPI.get(this.getUserById);
+          const {data} = await localAPI.get(this.getUserById);
           this.user = data;
         } catch (e) {
           console.log(e)

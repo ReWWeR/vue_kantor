@@ -11,7 +11,7 @@
         <th scope="col">#</th>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
-        <th scope="col">Age</th>
+        <th scope="col">Is Active</th>
         <th scope="col">E-mail</th>
         <th scope="col">Phone</th>
       </tr>
@@ -26,7 +26,7 @@
   import UserList from './UserList.vue';
   import Pagination from './Pagination.vue';
   import LimitBy from './LimitBy.vue';
-  import UsersAPI from './../../services/UsersAPI'
+  import {localAPI} from './../../services/UsersAPI'
 
   export default {
     name: 'user-table',
@@ -42,7 +42,7 @@
     }),
     computed: {
       showForm() {
-        return this.users.length
+        return !!this.users.length
       },
       limitByUsers() {
         return this.users.slice((this.currentPage - 1) * this.rowsPerPage, this.rowsPerPage * this.currentPage)
@@ -51,7 +51,7 @@
     methods: {
       async getUsers() {
         try {
-          const {data} = await UsersAPI.get('/users');
+          const {data} = await localAPI.get('/users');
           this.users = data;
         } catch (e) {
           console.log(e)

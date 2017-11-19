@@ -4,7 +4,7 @@
       <li class="page-item" :class="{disabled: isFirstPage}">
         <button class="page-link" @click="prevNextButtons(-1)">Previous</button>
       </li>
-      <li class="page-item" :class="{active: isActive(page)}" v-for="(page, index) in totalPages" :key="page">
+      <li class="page-item" :class="{active: isActive(page)}" v-for="page in totalPages" :key="page">
         <button class="page-link" @click="setPagination(page)">{{ page }}</button>
       </li>
       <li class="page-item" :class="{disabled: isLastPage}">
@@ -35,9 +35,6 @@
         required: true
       }
     },
-    data: () => ({
-//      currentPage: 1
-    }),
     computed: {
       totalPages() {
         return Math.ceil(this.totalRows / this.rowsPerPage)
@@ -51,6 +48,8 @@
     },
     watch: {
       rowsPerPage() {
+        // set pagination to 1 on limitBy change
+
         this.setPagination(1);
       }
     },

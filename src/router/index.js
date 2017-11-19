@@ -19,6 +19,7 @@ export default new Router({
     {
       path: '/edit/:id',
       name: 'edit-user',
+      props: (route) => ({id: +route.params.id}),
       component: () => import('./../components/pages/EditUser.vue')
     }
   ]

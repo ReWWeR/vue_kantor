@@ -4,7 +4,7 @@
       <th scope="row">{{user.id}}</th>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
-      <td>{{user.age}}</td>
+      <td>{{user.isActive}}</td>
       <td>{{user.email}}</td>
       <td>{{user.phone}}</td>
       <td>

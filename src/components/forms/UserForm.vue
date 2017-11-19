@@ -25,14 +25,13 @@
                v-model="user.id" id="id" disabled>
       </div>
       <div class="col-md-2">
-        <label for="registered">Registered</label>
-        <input type="text" class="form-control" placeholder="Registration date"
-               v-model="user.registered" id="registered" disabled>
+        <label for="birthday">Birthday</label>
+        <datepicker id="birthday" placeholder="Birthday" class="form-control" v-model="user.birthday"></datepicker>
       </div>
       <div class="col-md-1">
         <label for="age">Age</label>
-        <input type="number" class="form-control" placeholder="Age"
-               v-model.number="user.age" id="age">
+        <input type="number" class="form-control" disabled placeholder="Age"
+               :value="ageCount" id="age">
       </div>
       <div class="col-md-2">
         <label for="accessLevel">Access level</label>
@@ -67,24 +66,42 @@
     </div>
     <div class="form-row mb-3">
       <div class="col form-row flex-nowrap">
-        <img :src="user.picture" v-if="user.picture" alt="">
-        <div class="ml-3 w-100">
+        <div class="col-sm-3" v-if="user.picture">
+        <img :src="user.picture" class="img-thumbnail" alt="">
+        </div>
+        <div class="col-sm-9">
           <label for="picture">Picture URL</label>
-          <input type="text" class="form-control" placeholder="Picture URL"
-                 v-model="user.picture" id="picture">
+          <input type="text" class="form-control mb-3" placeholder="Picture URL"
+                 v-model="user.picture" id="picture" readonly>
+          <dropzone v-model="user.picture"></dropzone>
+
+          <input type="file" ref="avatarUpload" id="avatarUpload" name="avatarUpload" hidden @change="sendAvatar">
+          <button class="btn btn-primary mt-3" @click="uploadImageButtonHandler">Upload Image</button>
         </div>
       </div>
     </div>
     <div class="form-row mb-3">
       <div class="col">
         <label for="about">About</label>
-        <textarea name="about" id="about" rows="5" class="form-control" v-model="user.about"></textarea>
+        <medium-editor name="about" id="about" v-model="user.about"></medium-editor>
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="col">
+        <button type="button" @click="saveUser" class="btn btn-primary">{{saveUpdateButtonText}}</button>
+        <button type="button" @click="deleteUser" class="btn btn-danger" v-if="isEditForm">Delete user</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {localAPI, imgurAPI} from './../../services/UsersAPI'
+  import Datepicker from './../plugins/Datepicker.vue'
+  import MediumEditor from './../plugins/MediumEditor.vue'
+  import Dropzone from './../plugins/Dropzone.vue'
+  import moment from 'moment'
+
   export default {
     name: 'edit-form',
     model: {
@@ -96,8 +113,67 @@
         required: true
       }
     },
+    components: {
+      Datepicker,
+      MediumEditor,
+      Dropzone
+    },
     data: () => ({
-      accessLevels: ['user','guest','admin']
-    })
+      accessLevels: ['user', 'guest', 'admin']
+    }),
+    computed: {
+      saveUserURL() {
+        return this.isEditForm ? `/users/${this.user.id}` : '/users'
+      },
+      deleteUserURL() {
+        return `/users/${this.user.id}`
+      },
+      isEditForm() {
+        return this.$route.name === 'edit-user'
+      },
+      saveUpdateButtonText() {
+        return this.isEditForm ? 'Edit user' : 'Save user'
+      },
+      ageCount() {
+        if (this.user.birthday) {
+          return moment().diff(Date.parse(this.user.birthday), 'years')
+        }
+      }
+    },
+    methods: {
+      uploadImageButtonHandler() {
+        this.$refs.avatarUpload.click();
+      },
+      async saveUser() {
+        try {
+          if (this.isEditForm) {
+            await localAPI.patch(this.saveUserURL, this.user);
+          } else {
+            await localAPI.post(this.saveUserURL, this.user);
+          }
+          this.$router.push({path: '/'});
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async deleteUser() {
+        try {
+          await localAPI.delete(this.deleteUserURL);
+          this.$router.push({path: '/'});
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async sendAvatar() {
+        try {
+          const avatarFile = new FormData();
+          avatarFile.append('image', this.$refs.avatarUpload.files[0]);
+          const {data} = await imgurAPI.post('', avatarFile);
+          this.user.picture = data.data.link;
+        } catch(e) {
+          console.log(e)
+        }
+      }
+    }
   }
 </script>

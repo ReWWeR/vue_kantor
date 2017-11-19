@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>Edit User</h1>
+          <h1>Add User</h1>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col">
-          <user-form v-model="user" v-if="user"></user-form>
+          <user-form v-model="user"></user-form>
         </div>
       </div>
     </div>
@@ -27,7 +27,21 @@
     },
     data: () => {
       return {
-        user: {}
+        user: {
+          "id": 0,
+          "isActive": false,
+          "balance": "",
+          "picture": "",
+          "accessLevel": [],
+          "firstName": "",
+          "lastName": "",
+          "company": "",
+          "email": "",
+          "phone": "",
+          "address": "",
+          "about": "",
+          "birthday": ""
+        }
       }
     }
   }
